@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup - Gratitude Journal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Signup</h1>
+    <input type="text" id="newUsername" placeholder="Choose a Username">
+    <input type="password" id="newPassword" placeholder="Choose a Password">
+    <button onclick="signup()">Signup</button>
+    <p id="message" style="color: green; display: none;">Account created successfully! Redirecting to login...</p>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    function signup() {
+      const username = document.getElementById('newUsername').value.trim();
+      const password = document.getElementById('newPassword').value.trim();
+
+      if (username && password) {
+        // Save the credentials in localStorage
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+
+        // Show success message and redirect
+        document.getElementById('message').style.display = 'block';
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 2000);
+      } else {
+        alert('Please fill in both fields!');
+      }
+    }
+  </script>
+</body>
+</html>
